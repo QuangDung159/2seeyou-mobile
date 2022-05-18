@@ -1,5 +1,5 @@
 import { CustomButton, CustomModal } from '@components/uiComponents';
-import { LOCATION } from '@constants/Common';
+import { LOCATION_HCMC } from '@constants/Common';
 import Theme from '@constants/Theme';
 import { getLocationIndexByName } from '@helpers/CommonHelpers';
 import React from 'react';
@@ -29,7 +29,7 @@ export default function LocationModal({
 
     const handleGetListLocationName = () => {
         const listLocationName = [];
-        LOCATION.forEach((locationItem) => {
+        LOCATION_HCMC.forEach((locationItem) => {
             listLocationName.push(locationItem.value);
         });
 
@@ -53,7 +53,7 @@ export default function LocationModal({
                 onValueChange={(data) => {
                     onChangeLocation(data);
                 }}
-                wrapperHeight={200}
+                wrapperHeight={120}
                 wrapperWidth={150}
                 wrapperBackground={COLORS.BASE}
                 itemHeight={40}

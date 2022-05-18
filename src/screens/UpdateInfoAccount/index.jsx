@@ -3,7 +3,7 @@ import { LocationModal } from '@components/businessComponents';
 import {
     CenterLoader, CustomButton, CustomCheckbox, CustomInput, CustomModal, CustomText, Line, OptionItem, TouchableText
 } from '@components/uiComponents';
-import { LOCATION } from '@constants/Common';
+import { LOCATION_HCMC } from '@constants/Common';
 import { HOST_CONTENT } from '@constants/HostContent';
 import { Interests, ScreenName, Theme } from '@constants/index';
 import { getLocationIndexByName } from '@helpers/CommonHelpers';
@@ -162,7 +162,7 @@ export default function UpdateInfoAccount({ navigation }) {
                     setModalLocationVisible(true);
                 }}
                 type="active"
-                label={LOCATION[hometownSelectedIndex]?.value}
+                label={LOCATION_HCMC[hometownSelectedIndex]?.value}
                 buttonStyle={{
                     backgroundColor: COLORS.BASE,
                     borderColor: COLORS.ACTIVE,
@@ -834,7 +834,7 @@ export default function UpdateInfoAccount({ navigation }) {
             imageUrl: url,
             minimumDuration: +newUser.minimumDuration,
             earningExpected: +newUser.earningExpected,
-            homeTown: LOCATION[hometownSelectedIndex].value
+            homeTown: LOCATION_HCMC[hometownSelectedIndex].value
         };
 
         if (currentUser?.isPartnerVerified) {

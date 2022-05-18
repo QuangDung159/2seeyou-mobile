@@ -199,3 +199,85 @@ export const LOCATION = [
         value: '',
     },
 ];
+
+/* eslint-disable import/prefer-default-export */
+export const LOCATION_HCMC = [
+    {
+        value: '',
+    },
+    {
+        value: 'Tất cả',
+    },
+    {
+        value: 'Quận 1',
+    },
+    {
+        value: 'Quận 2'
+    },
+    {
+        value: 'Quận 3'
+    },
+    {
+        value: 'Quận 4'
+    },
+    {
+        value: 'Quận 5'
+    },
+    {
+        value: 'Quận 6'
+    },
+    {
+        value: 'Quận 7'
+    },
+    {
+        value: 'Quận 8'
+    },
+    {
+        value: 'Quận 9'
+    },
+    {
+        value: 'Quận 10'
+    },
+    {
+        value: 'Quận 11'
+    },
+    {
+        value: 'Quận 12',
+    },
+    {
+        value: 'Bình Thạnh',
+    },
+    {
+        value: 'Gò Vấp',
+    },
+    {
+        value: 'Phú Nhuận',
+    },
+    {
+        value: 'Tân Bình',
+    },
+    {
+        value: 'Tân Phú',
+    },
+    {
+        value: 'TP.Thủ Đức',
+    },
+    {
+        value: 'Bình Chánh',
+    },
+    {
+        value: 'Cần Giờ',
+    },
+    {
+        value: 'Củ Chi',
+    },
+    {
+        value: 'Hóc Môn',
+    },
+    {
+        value: 'Nhà Bè',
+    },
+    {
+        value: '',
+    },
+];
