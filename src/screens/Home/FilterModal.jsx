@@ -110,7 +110,7 @@ export default function FilterModal({
                     setModalLocationVisible(true);
                 }}
                 type="active"
-                label={LOCATION[hometownSelectedIndex]?.value}
+                label={LOCATION[hometownSelectedIndex || 1]?.value}
                 buttonStyle={{
                     backgroundColor: COLORS.BASE,
                     borderColor: COLORS.ACTIVE,
