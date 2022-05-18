@@ -53,7 +53,7 @@ export default function LocationModal({
                 onValueChange={(data) => {
                     onChangeLocation(data);
                 }}
-                wrapperHeight={120}
+                wrapperHeight={280}
                 wrapperWidth={150}
                 wrapperBackground={COLORS.BASE}
                 itemHeight={40}
@@ -68,6 +68,18 @@ export default function LocationModal({
                     color: COLORS.DEFAULT,
                     fontFamily: TEXT_REGULAR,
                     fontSize: SIZES.FONT_H1
+                }}
+            />
+            <View
+                style={{
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 119,
+                    height: 40,
+                    width: '100%',
+                    borderColor: COLORS.ACTIVE,
+                    borderWidth: 0.5,
+                    borderRadius: 20
                 }}
             />
         </View>
