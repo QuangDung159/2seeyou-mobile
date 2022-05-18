@@ -25,7 +25,7 @@ export default function FilterModal({
     const defaultFilter = {
         ageFrom: 18,
         ageTo: 30,
-        feeFrom: 1250,
+        feeFrom: 1000,
         feeTo: 10000,
         rating: 0,
         from: 1,

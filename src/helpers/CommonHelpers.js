@@ -127,6 +127,9 @@ export const clearAllLocalStorage = () => {
         .then(console.log('deviceId was cleaned!'));
 
     SecureStore.deleteItemAsync('LOCAL_VERSION').then(console.log('LOCAL_VERSION was cleaned!'));
+    SecureStore.deleteItemAsync('LIST_INTEREST_FILTER').then(console.log('LIST_INTEREST_FILTER was cleaned!'));
+    SecureStore.deleteItemAsync('FILTER').then(console.log('FILTER was cleaned!'));
+    SecureStore.deleteItemAsync('LIST_GENDER_FILTER').then(console.log('LIST_GENDER_FILTER was cleaned!'));
 
     ToastHelpers.renderToast('All caches cleaned!', 'success');
 };
