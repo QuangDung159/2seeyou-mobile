@@ -16,6 +16,7 @@ const COLORS = {
     SELECTED_DATE: '#b3f1ff',
     BASE: '#ffffff',
     PLACE_HOLDER: '#c4c4c4',
+    SEPARATE: '#ededed'
 };
 
 const SIZES = {

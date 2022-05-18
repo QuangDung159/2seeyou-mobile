@@ -1,7 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint no-underscore-dangle: ["error", { "allow": ["_isMounted", "_id"] }] */
 import { LocationModal } from '@components/businessComponents';
 import ProfileInfoItem from '@components/businessComponents/ProfileInfoItem';
-import { CenterLoader, CustomText, IconCustom } from '@components/uiComponents';
+import {
+    CenterLoader, CustomText, IconCustom, Separator
+} from '@components/uiComponents';
 import { LOCATION } from '@constants/Common';
 import { GENDER } from '@constants/Gender';
 import {
@@ -21,7 +24,7 @@ import { BookingServices, NotificationServices, UserServices } from '@services/i
 import { socketRequestUtil } from '@utils/index';
 import * as SecureStore from 'expo-secure-store';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
     Alert, FlatList, RefreshControl, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View
 } from 'react-native';
@@ -54,6 +57,7 @@ export default function Home({ navigation }) {
     const [modalLocationVisible, setModalLocationVisible] = useState(false);
     const [hometownSelectedIndex, setHometownSelectedIndex] = useState(0);
     const [listPartnerFilter, setListPartnerFilter] = useState(listPartnerHomeRedux);
+    const [listInterestFilter, setListInterestFilter] = useState([]);
 
     const dispatch = useDispatch();
 
@@ -305,7 +309,6 @@ export default function Home({ navigation }) {
         result = filterByEstimatePricing(result, filterObj);
         result = filterByInterest(result, filterObj);
 
-        console.log('result :>> ', result);
         setListPartnerFilter(result);
     };
 
@@ -452,9 +455,9 @@ export default function Home({ navigation }) {
                 />
             )}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
                 <>
-                    {renderUserCard(item)}
+                    {renderUserCard(item, index)}
                 </>
             )}
             onEndReached={() => {
@@ -477,7 +480,17 @@ export default function Home({ navigation }) {
         />
     );
 
-    const renderUserCard = (item) => {
+    const handleInterestFromAPI = (user) => {
+        if (!user?.interests) {
+            return 'N/a';
+        }
+
+        const result = user.interests.split(', ');
+        result.splice(result.length - 1, 1);
+        return result.join(', ');
+    };
+
+    const renderUserCard = (item, index) => {
         let amountDisplay = item.id === currentUser.id ? item.earningExpected : item.estimatePricing;
         amountDisplay = CommonHelpers.formatCurrency(amountDisplay);
 
@@ -488,13 +501,20 @@ export default function Home({ navigation }) {
                 <View
                     style={{
                         backgroundColor: COLORS.BASE,
-                        marginBottom: 10
+                        alignItems: 'center'
                     }}
                 >
+                    {index === 0 && (
+                        <Separator style={{
+                            marginTop: -10
+                        }}
+                        />
+                    )}
                     <View
                         style={{
                             flexDirection: 'row',
                             width: SIZES.WIDTH_MAIN,
+                            marginVertical: 10
                         }}
                     >
                         <View style={styles.imageContainer}>
@@ -503,7 +523,7 @@ export default function Home({ navigation }) {
                                     zIndex: 99,
                                     borderRadius: 10
                                 }}
-                                width={SIZES.WIDTH_BASE * 0.4 - 5}
+                                width={SIZES.WIDTH_BASE * 0.4 - 10}
                                 source={item.url ? { uri: item.url } : Images.defaultImage}
                             />
                         </View>
@@ -517,47 +537,55 @@ export default function Home({ navigation }) {
                                     fontSize: SIZES.FONT_H2,
                                     color: COLORS.ACTIVE,
                                     fontFamily: TEXT_BOLD,
-                                    marginBottom: 5
                                 }}
                             >
                                 {handleDisplayName(item.fullName)}
                             </Text>
-                            <ProfileInfoItem
+                            {/* <ProfileInfoItem
                                 fontSize={SIZES.FONT_H3}
                                 iconName="home"
                                 iconFamily={IconFamily.FONT_AWESOME_5}
                                 content={`${item.homeTown || 'N/a'}`}
                                 iconSize={16}
-                            />
+                            /> */}
+                            <Text
+                                style={{
+                                    fontSize: SIZES.FONT_H3,
+                                    color: COLORS.DEFAULT,
+                                }}
+                            >
+                                {`${item.homeTown || 'N/a'}`}
+                            </Text>
                             <View
                                 style={{
                                     flexDirection: 'row',
                                     alignItems: 'center',
+                                    justifyContent: 'space-between'
                                 }}
                             >
-                                <View
-                                    style={{
-                                        width: '50%'
-                                    }}
-                                >
-                                    <ProfileInfoItem
-                                        fontSize={SIZES.FONT_H3}
-                                        iconName="birthday-cake"
-                                        iconFamily={IconFamily.FONT_AWESOME}
-                                        content={
-                                            moment(item.dob).format('YYYY').toString().toLowerCase() !== 'invalid date'
-                                                ? moment(item.dob).format('YYYY').toString()
-                                                : '1990'
-                                        }
-                                        iconSize={16}
-                                    />
-                                </View>
-
+                                <ProfileInfoItem
+                                    fontSize={SIZES.FONT_H3}
+                                    iconName="birthday-cake"
+                                    iconFamily={IconFamily.FONT_AWESOME}
+                                    content={
+                                        moment(item.dob).format('YYYY').toString().toLowerCase() !== 'invalid date'
+                                            ? moment(item.dob).format('YYYY').toString()
+                                            : '1990'
+                                    }
+                                    iconSize={16}
+                                />
                                 <ProfileInfoItem
                                     fontSize={SIZES.FONT_H3}
                                     iconName={item.isMale ? 'male' : 'female'}
                                     iconFamily={IconFamily.FONTISTO}
                                     content={`${item.isMale ? 'Nam' : 'Nữ'}`}
+                                    iconSize={16}
+                                />
+                                <ProfileInfoItem
+                                    fontSize={SIZES.FONT_H3}
+                                    iconName="star"
+                                    iconFamily={IconFamily.FONT_AWESOME}
+                                    content={`${item.ratingAvg}/5`}
                                     iconSize={16}
                                 />
                             </View>
@@ -566,7 +594,7 @@ export default function Home({ navigation }) {
                                 style={{
                                     flexDirection: 'row',
                                     alignItems: 'center',
-                                    marginBottom: 5
+                                    marginTop: -3
                                 }}
                             >
                                 <View
@@ -577,11 +605,10 @@ export default function Home({ navigation }) {
                                     <Text
                                         style={{
                                             fontSize: SIZES.FONT_H3,
-                                            color: COLORS.ACTIVE,
-                                            fontFamily: TEXT_BOLD,
+                                            color: COLORS.DEFAULT,
                                         }}
                                     >
-                                        {`Đánh giá: ${item.ratingAvg}/5 sao`}
+                                        {handleInterestFromAPI(item)}
                                     </Text>
                                 </View>
                             </View>
@@ -610,6 +637,7 @@ export default function Home({ navigation }) {
                             </View>
                         </View>
                     </View>
+                    <Separator />
                 </View>
             </TouchableNativeFeedback>
         );
@@ -620,7 +648,7 @@ export default function Home({ navigation }) {
             style={{
                 position: 'absolute',
                 bottom: 10,
-                right: 0,
+                right: 10,
                 width: 45,
                 height: 45,
                 borderRadius: 25,
@@ -641,6 +669,26 @@ export default function Home({ navigation }) {
         </TouchableOpacity>
     );
 
+    const renderFilterModal = useCallback(
+        () => (
+            <FilterModal
+                setModalFilterVisible={setModalFilterVisible}
+                modalFilterVisible={modalFilterVisible}
+                setModalLocationVisible={setModalLocationVisible}
+                hometownSelectedIndex={hometownSelectedIndex}
+                setHometownSelectedIndex={setHometownSelectedIndex}
+                listInterestFilter={listInterestFilter}
+                setListInterestFilter={setListInterestFilter}
+            />
+        ), [listInterestFilter,
+            setListInterestFilter,
+            setModalFilterVisible,
+            modalFilterVisible,
+            setModalLocationVisible,
+            hometownSelectedIndex,
+            setHometownSelectedIndex]
+    );
+
     try {
         return (
             <>
@@ -649,19 +697,15 @@ export default function Home({ navigation }) {
                 ) : (
                     <View
                         style={{
-                            backgroundColor: COLORS.BASE,
+                            backgroundColor: COLORS.SEPARATE,
                             alignSelf: 'center',
+                            width: SIZES.WIDTH_BASE,
+                            flex: 1
                         }}
                     >
                         {renderArticles()}
                         {renderFilterButton()}
-                        <FilterModal
-                            setModalFilterVisible={setModalFilterVisible}
-                            modalFilterVisible={modalFilterVisible}
-                            setModalLocationVisible={setModalLocationVisible}
-                            hometownSelectedIndex={hometownSelectedIndex}
-                            setHometownSelectedIndex={setHometownSelectedIndex}
-                        />
+                        {renderFilterModal()}
 
                         <LocationModal
                             modalLocationVisible={modalLocationVisible}
@@ -688,7 +732,7 @@ const styles = StyleSheet.create({
     imageContainer: {
         elevation: 1,
         overflow: 'hidden',
-        flex: 1
+        flex: 1,
     },
     subInfoCard: {
         fontFamily: TEXT_REGULAR,

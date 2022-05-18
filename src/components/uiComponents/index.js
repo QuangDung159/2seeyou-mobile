@@ -13,6 +13,7 @@ import NoteText from './NoteText';
 import OptionItem from './OptionItem';
 import OtpItem from './OtpItem';
 import RadioButton from './RadioButton';
+import Separator from './Separator';
 import StepIndicator from './StepIndicator';
 import Switch from './Switch';
 import TopTabBar from './TopTabBar';
@@ -36,5 +37,6 @@ export {
     CustomText,
     RadioButton,
     OtpItem,
-    OptionItem
+    OptionItem,
+    Separator
 };
