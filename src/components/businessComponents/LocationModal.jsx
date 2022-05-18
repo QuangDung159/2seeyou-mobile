@@ -1,5 +1,5 @@
 import { CustomButton, CustomModal } from '@components/uiComponents';
-import { LOCATION_HCMC } from '@constants/Common';
+import { LOCATION } from '@constants/Common';
 import Theme from '@constants/Theme';
 import { getLocationIndexByName } from '@helpers/CommonHelpers';
 import React from 'react';
@@ -29,7 +29,7 @@ export default function LocationModal({
 
     const handleGetListLocationName = () => {
         const listLocationName = [];
-        LOCATION_HCMC.forEach((locationItem) => {
+        LOCATION.forEach((locationItem) => {
             listLocationName.push(locationItem.value);
         });
 

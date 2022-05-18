@@ -2,7 +2,7 @@
 /* eslint-disable no-plusplus */
 import App from '@constants/App';
 import BookingStatus from '@constants/BookingStatus';
-import { LOCATION_HCMC } from '@constants/Common';
+import { LOCATION } from '@constants/Common';
 import { dev, prd, stg } from '@constants/Config';
 import * as SecureStore from 'expo-secure-store';
 import moment from 'moment';
@@ -86,7 +86,7 @@ export const correctFullNameDisplay = (fullName) => {
 };
 
 export const getLocationIndexByName = (locationName) => {
-    const locationIndex = LOCATION_HCMC.findIndex((item) => item.value.toLowerCase() === locationName.toLowerCase());
+    const locationIndex = LOCATION.findIndex((item) => item.value.toLowerCase() === locationName.toLowerCase());
     return locationIndex;
 };
 

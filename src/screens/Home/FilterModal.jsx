@@ -2,7 +2,7 @@
 import {
     CustomButton, CustomInput, CustomModal, CustomText, OptionItem
 } from '@components/uiComponents';
-import { LOCATION_HCMC } from '@constants/Common';
+import { LOCATION } from '@constants/Common';
 import { GENDER_ARRAY } from '@constants/Gender';
 import Interests from '@constants/Interests';
 import Theme from '@constants/Theme';
@@ -110,7 +110,7 @@ export default function FilterModal({
                     setModalLocationVisible(true);
                 }}
                 type="active"
-                label={LOCATION_HCMC[hometownSelectedIndex]?.value}
+                label={LOCATION[hometownSelectedIndex]?.value}
                 buttonStyle={{
                     backgroundColor: COLORS.BASE,
                     borderColor: COLORS.ACTIVE,

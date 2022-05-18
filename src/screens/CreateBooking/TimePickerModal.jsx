@@ -66,6 +66,19 @@ export default function TimePickerModal({
                 backgroundColor: COLORS.BASE
             }}
         >
+            <View
+                style={{
+                    position: 'absolute',
+                    right: 0,
+                    bottom: 79,
+                    height: 40,
+                    width: '100%',
+                    borderColor: COLORS.ACTIVE,
+                    borderWidth: 0.5,
+                    borderRadius: 20,
+                    zIndex: 99
+                }}
+            />
             <ScrollPicker
                 dataSource={hourArr}
                 selectedIndex={
@@ -74,7 +87,7 @@ export default function TimePickerModal({
                 onValueChange={(data) => {
                     onChangeHourTimePicker(data);
                 }}
-                wrapperHeight={120}
+                wrapperHeight={200}
                 wrapperWidth={150}
                 wrapperBackground={COLORS.BASE}
                 itemHeight={40}
@@ -100,7 +113,7 @@ export default function TimePickerModal({
                 onValueChange={(data) => {
                     onChangeMinuteTimePicker(data);
                 }}
-                wrapperHeight={120}
+                wrapperHeight={200}
                 wrapperWidth={150}
                 wrapperBackground={COLORS.BASE}
                 itemHeight={40}

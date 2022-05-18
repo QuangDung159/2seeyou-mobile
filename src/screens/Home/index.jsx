@@ -2,7 +2,7 @@
 import { LocationModal } from '@components/businessComponents';
 import ProfileInfoItem from '@components/businessComponents/ProfileInfoItem';
 import { CenterLoader, CustomText, IconCustom } from '@components/uiComponents';
-import { LOCATION_HCMC } from '@constants/Common';
+import { LOCATION } from '@constants/Common';
 import { GENDER } from '@constants/Gender';
 import {
     GraphQueryString, IconFamily, Images, ScreenName, Theme
@@ -158,7 +158,7 @@ export default function Home({ navigation }) {
 
     const showAlertLocation = () => {
         let isValidLocation = false;
-        LOCATION_HCMC.forEach((item) => {
+        LOCATION.forEach((item) => {
             if (item.value.toLowerCase() === currentUser.homeTown.toLowerCase()) {
                 isValidLocation = true;
             }
@@ -286,7 +286,7 @@ export default function Home({ navigation }) {
         }
 
         let result = listUser;
-        const locationByIndex = LOCATION_HCMC[filterObj.from];
+        const locationByIndex = LOCATION[filterObj.from];
 
         result = result.filter((userItem) => userItem.homeTown.toLowerCase() === locationByIndex.value.toLowerCase());
         return result;
