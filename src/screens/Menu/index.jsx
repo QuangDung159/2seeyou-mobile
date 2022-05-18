@@ -200,7 +200,7 @@ export default function Menu({ navigation }) {
                             alignItems: 'center',
                             width: SIZES.WIDTH_MAIN,
                             alignSelf: 'center',
-                            height: 60,
+                            height: 50,
                         }}
                         onPress={() => menuItem.onPress()}
                     >
