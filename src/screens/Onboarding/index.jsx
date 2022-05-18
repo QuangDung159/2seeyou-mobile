@@ -220,7 +220,7 @@ export default function Onboarding({ navigation }) {
                         >
                             <View
                                 style={{
-                                    paddingBottom: 90,
+                                    paddingBottom: 50,
                                     alignSelf: 'center',
                                     alignItems: 'center'
                                 }}

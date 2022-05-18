@@ -160,6 +160,7 @@ export default function UsernamePasswordForm({ navigation }) {
                     style={styles.formInputContainer}
                 >
                     <CustomInput
+                        label="Tên đăng nhập"
                         value={username}
                         inputStyle={{
                             width: SIZES.WIDTH_MAIN,
@@ -170,10 +171,10 @@ export default function UsernamePasswordForm({ navigation }) {
                             marginVertical: 10,
                             width: SIZES.WIDTH_MAIN
                         }}
-                        placeholder="Tên đăng nhập*"
                     />
 
                     <CustomInput
+                        label="Mật khẩu"
                         value={password}
                         inputStyle={{
                             width: SIZES.WIDTH_MAIN,
@@ -185,7 +186,6 @@ export default function UsernamePasswordForm({ navigation }) {
                             width: SIZES.WIDTH_MAIN
                         }}
                         secureTextEntry={!isShowPassword}
-                        placeholder="Mật khẩu*"
                         rightIcon={{
                             name: 'eye',
                             family: IconFamily.ENTYPO,
@@ -196,6 +196,7 @@ export default function UsernamePasswordForm({ navigation }) {
                     />
 
                     <CustomInput
+                        label="Xác nhận mật khẩu"
                         value={rePassword}
                         inputStyle={{
                             width: SIZES.WIDTH_MAIN,
@@ -207,7 +208,6 @@ export default function UsernamePasswordForm({ navigation }) {
                             width: SIZES.WIDTH_MAIN
                         }}
                         secureTextEntry={!isShowPassword}
-                        placeholder="Xác nhận mật khẩu*"
                         rightIcon={{
                             name: 'eye',
                             family: IconFamily.ENTYPO,
@@ -249,9 +249,9 @@ export default function UsernamePasswordForm({ navigation }) {
         </>
     );
     return (
-        <View>
+        <>
             {renderRegisterForm()}
-        </View>
+        </>
     );
 }
 

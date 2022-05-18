@@ -89,8 +89,8 @@ export default function SignUp({ navigation }) {
                                             styles.title,
                                             {
                                                 color: COLORS.DEFAULT,
-                                                fontSize: 24,
-                                                marginTop: SIZES.HEIGHT_BASE * 0.15
+                                                fontSize: SIZES.FONT_H1,
+                                                marginTop: 130
                                             }
                                         ]
                                     }
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     stepSessionContainer: {
-        height: SIZES.HEIGHT_BASE * 0.3,
+        height: 230,
         alignSelf: 'center',
         alignItems: 'center'
     },

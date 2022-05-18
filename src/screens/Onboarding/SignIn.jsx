@@ -208,7 +208,7 @@ export default function SignIn({
                 }}
             >
                 <CustomInput
-                    placeholder="Tên đăng nhập"
+                    label="Tên đăng nhập"
                     value={username}
                     onChangeText={
                         (usernameInput) => setUsername(usernameInput?.trim() || '')
@@ -219,13 +219,13 @@ export default function SignIn({
                 />
 
                 <CustomInput
+                    label="Mật khẩu"
                     value={password}
                     onChangeText={(passwordInput) => setPassword(passwordInput)}
                     containerStyle={{
                         marginVertical: 10,
                     }}
                     secureTextEntry={!isShowPassword}
-                    placeholder="Mật khẩu"
                     rightIcon={{
                         name: 'eye',
                         family: IconFamily.ENTYPO,
