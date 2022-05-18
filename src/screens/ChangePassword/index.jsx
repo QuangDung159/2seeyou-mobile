@@ -116,7 +116,6 @@ export default function ChangePassword() {
                     width: SIZES.WIDTH_MAIN
                 }}
                 secureTextEntry={!isShowCurrentPassword}
-                placeholder="Nhập mật khẩu hiện tại"
                 rightIcon={{
                     name: 'eye',
                     family: IconFamily.ENTYPO,
@@ -138,7 +137,6 @@ export default function ChangePassword() {
                     width: SIZES.WIDTH_MAIN
                 }}
                 secureTextEntry={!isShowNewPassword}
-                placeholder="Nhập mật khẩu mới"
                 rightIcon={{
                     name: 'eye',
                     family: IconFamily.ENTYPO,
@@ -160,7 +158,6 @@ export default function ChangePassword() {
                     width: SIZES.WIDTH_MAIN
                 }}
                 secureTextEntry={!isShowReNewPassword}
-                placeholder="Xác nhận mật khẩu mới"
                 rightIcon={{
                     name: 'eye',
                     family: IconFamily.ENTYPO,
