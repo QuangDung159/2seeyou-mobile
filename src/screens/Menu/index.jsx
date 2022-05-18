@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import {
-    CustomText, IconCustom, Line
+    CustomText, IconCustom, Separator
 } from '@components/uiComponents';
 import App from '@constants/App';
 import IconFamily from '@constants/IconFamily';
@@ -190,15 +190,17 @@ export default function Menu({ navigation }) {
             (
                 <View style={{
                     alignSelf: 'center',
+                    backgroundColor: COLORS.BASE
                 }}
                 >
+                    <Separator />
                     <TouchableOpacity
                         style={{
                             flexDirection: 'row',
                             alignItems: 'center',
                             width: SIZES.WIDTH_MAIN,
                             alignSelf: 'center',
-                            height: 30,
+                            height: 60,
                         }}
                         onPress={() => menuItem.onPress()}
                     >
@@ -228,7 +230,6 @@ export default function Menu({ navigation }) {
                             />
                         </View>
                     </TouchableOpacity>
-                    <Line />
                 </View>
             )
         );
@@ -236,14 +237,15 @@ export default function Menu({ navigation }) {
 
     try {
         return (
-            <>
+            <View style={{
+                backgroundColor: COLORS.SEPARATE,
+                flex: 1
+            }}
+            >
                 <FlatList
                     data={listMenu}
                     renderItem={({ item, index }) => renderMenuItem(item, index)}
                     keyExtractor={(item) => item?.title}
-                    style={{
-                        paddingTop: 10
-                    }}
                 />
                 {/* <TouchableText
                     onPress={() => {
@@ -266,7 +268,7 @@ export default function Menu({ navigation }) {
                     }}
                     text={`${ENV} - ${App.STORE_VERSION} (${App.APP_VERSION_OTA})`}
                 />
-            </>
+            </View>
         );
     } catch (exception) {
         console.log('exception :>> ', exception);
