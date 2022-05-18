@@ -174,12 +174,16 @@ export const setCurrentBookingRedux = (currentBookingRedux) => ({
     }
 });
 
-export const setListPartnerHomeRedux = (listPartnerHomeRedux) => ({
-    type: SET_LIST_PARTNER_HOME_REDUX,
-    payload: {
-        listPartnerHomeRedux
-    }
-});
+export const setListPartnerHomeRedux = (listPartnerHomeRedux) => {
+    const result = listPartnerHomeRedux?.filter((item) => !item.userName.includes('pickme-'));
+
+    return {
+        type: SET_LIST_PARTNER_HOME_REDUX,
+        payload: {
+            listPartnerHomeRedux: result
+        }
+    };
+};
 
 export const setCountdownSendOtpRedux = (countdownSendOtpRedux) => ({
     type: SET_COUNTDOWN_SEND_OTP_REDUX,
