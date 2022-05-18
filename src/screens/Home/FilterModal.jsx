@@ -99,10 +99,6 @@ export default function FilterModal({
         >
             <CustomText
                 text="Nơi ở hiện tại:"
-                style={{
-                    color: COLORS.ACTIVE,
-                    fontSize: SIZES.FONT_H3,
-                }}
             />
             <CustomButton
                 onPress={() => {
@@ -134,8 +130,6 @@ export default function FilterModal({
             <CustomText
                 text="Sở thích:"
                 style={{
-                    color: COLORS.ACTIVE,
-                    fontSize: SIZES.FONT_H3,
                     marginBottom: 3
                 }}
             />
@@ -192,9 +186,6 @@ export default function FilterModal({
                     maxLength={2}
                 />
                 <CustomText
-                    style={{
-                        color: COLORS.ACTIVE,
-                    }}
                     text="đến"
                 />
                 <CustomInput
@@ -219,9 +210,6 @@ export default function FilterModal({
         }}
         >
             <CustomText
-                style={{
-                    color: COLORS.ACTIVE,
-                }}
                 text="Giới tính:"
             />
             <View
@@ -278,7 +266,6 @@ export default function FilterModal({
         >
             <CustomText
                 style={{
-                    color: COLORS.ACTIVE,
                     marginBottom: 3
                 }}
                 text="Phí mời (xu/phút):"
@@ -310,9 +297,6 @@ export default function FilterModal({
                     }}
                 />
                 <CustomText
-                    style={{
-                        color: COLORS.ACTIVE,
-                    }}
                     text="đến"
                 />
                 <CustomInput
