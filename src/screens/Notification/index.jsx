@@ -135,7 +135,8 @@ export default function Notification({ navigation }) {
         return (
             <SafeAreaView
                 style={{
-                    flex: 1
+                    flex: 1,
+                    backgroundColor: COLORS.SEPARATE
                 }}
             >
                 {isShowSpinner ? (

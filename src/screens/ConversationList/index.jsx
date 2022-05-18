@@ -2,7 +2,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */
 import { ModalReport } from '@components/businessComponents';
 import {
-    CenterLoader, IconCustom
+    CenterLoader, IconCustom, Separator
 } from '@components/uiComponents';
 import {
     GraphQueryString, IconFamily, Images, ScreenName, Theme
@@ -189,61 +189,47 @@ export default function ConversationList({ navigation }) {
         }
 
         return (
-            <View
-                style={{
-                    alignItems: 'center',
-                    flexDirection: 'row',
-                    width: SIZES.WIDTH_MAIN,
-                }}
-            >
-                <TouchableOpacity
-                    onPress={() => navigation.navigate(ScreenName.PROFILE, { userId: params.toUserId })}
+            <>
+                <Separator />
+                <View
+                    style={{
+                        alignItems: 'center',
+                        flexDirection: 'row',
+                        width: SIZES.WIDTH_BASE,
+                        backgroundColor: COLORS.BASE
+                    }}
                 >
-                    <View
-                        style={{
-                            marginHorizontal: 10,
-                            paddingVertical: 10
-                        }}
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate(ScreenName.PROFILE, { userId: params.toUserId })}
                     >
-                        <Image
-                            source={
-                                params.imageUrl ? { uri: params.imageUrl } : Images.defaultImage
-                            }
-                            style={{
-                                width: 50,
-                                height: 50,
-                                borderRadius: 25
-                            }}
-                        />
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={
-                        () => {
-                            onClickConversationItem(params);
-                        }
-                    }
-                >
-                    <View
-                        style={{
-                            width: SIZES.WIDTH_BASE * 0.7
-                        }}
-                    >
-                        <Text
-                            style={{
-                                fontFamily: conversation?.isRead
-                                    ? TEXT_REGULAR
-                                    : TEXT_BOLD,
-                                fontSize: SIZES.FONT_H2,
-                                color: COLORS.DEFAULT,
-                            }}
-
-                        >
-                            {params.name}
-                        </Text>
                         <View
                             style={{
-                                width: SIZES.WIDTH_BASE * 0.77
+                                marginHorizontal: 10,
+                                paddingVertical: 10
+                            }}
+                        >
+                            <Image
+                                source={
+                                    params.imageUrl ? { uri: params.imageUrl } : Images.defaultImage
+                                }
+                                style={{
+                                    width: 50,
+                                    height: 50,
+                                    borderRadius: 25
+                                }}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={
+                            () => {
+                                onClickConversationItem(params);
+                            }
+                        }
+                    >
+                        <View
+                            style={{
+                                width: SIZES.WIDTH_BASE * 0.7
                             }}
                         >
                             <Text
@@ -251,42 +237,63 @@ export default function ConversationList({ navigation }) {
                                     fontFamily: conversation?.isRead
                                         ? TEXT_REGULAR
                                         : TEXT_BOLD,
-                                    fontSize: SIZES.FONT_H4,
+                                    fontSize: SIZES.FONT_H2,
                                     color: COLORS.DEFAULT,
-
                                 }}
-                                numberOfLines={1}
-                            >
-                                {conversation?.content}
-                            </Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => onClickMore(params)}
-                >
-                    <View
-                        style={{
-                            marginHorizontal: 10,
-                            paddingVertical: 10
-                        }}
-                    >
-                        <IconCustom
-                            name="more-horizontal"
-                            family={IconFamily.FEATHER}
-                            size={23}
-                            color={COLORS.PLACE_HOLDER}
-                        />
-                    </View>
-                </TouchableOpacity>
 
-            </View>
+                            >
+                                {params.name}
+                            </Text>
+                            <View
+                                style={{
+                                    width: SIZES.WIDTH_BASE * 0.77
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        fontFamily: conversation?.isRead
+                                            ? TEXT_REGULAR
+                                            : TEXT_BOLD,
+                                        fontSize: SIZES.FONT_H4,
+                                        color: COLORS.DEFAULT,
+
+                                    }}
+                                    numberOfLines={1}
+                                >
+                                    {conversation?.content}
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={() => onClickMore(params)}
+                    >
+                        <View
+                            style={{
+                                marginHorizontal: 10,
+                                paddingVertical: 10
+                            }}
+                        >
+                            <IconCustom
+                                name="more-horizontal"
+                                family={IconFamily.FEATHER}
+                                size={23}
+                                color={COLORS.PLACE_HOLDER}
+                            />
+                        </View>
+                    </TouchableOpacity>
+                </View>
+            </>
         );
     };
 
     try {
         return (
-            <>
+            <View style={{
+                backgroundColor: COLORS.SEPARATE,
+                flex: 1
+            }}
+            >
                 {isShowSpinner ? (
                     <CenterLoader />
                 ) : (
@@ -340,7 +347,7 @@ export default function ConversationList({ navigation }) {
                         )}
                     </>
                 )}
-            </>
+            </View>
         );
     } catch (exception) {
         console.log('exception :>> ', exception);

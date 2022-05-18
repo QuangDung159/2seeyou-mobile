@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import { Albums, AvatarPanel, ModalReport } from '@components/businessComponents';
-import { CustomButton, IconCustom, Line } from '@components/uiComponents';
+import {
+    CustomButton, IconCustom, Separator
+} from '@components/uiComponents';
 import {
     IconFamily, Rx, ScreenName, Theme
 } from '@constants/index';
@@ -318,7 +320,10 @@ export default function UserDetail({ navigation, userInfo, setIsShowSpinner }) {
             if (currentUser.isHost) {
                 return (
                     <>
-                        <Line />
+                        <Separator style={{
+                            marginVertical: 10
+                        }}
+                        />
                         {renderPartnerDataPanel()}
                     </>
                 );
@@ -327,7 +332,10 @@ export default function UserDetail({ navigation, userInfo, setIsShowSpinner }) {
         if (userInfo.isHost) {
             return (
                 <>
-                    <Line />
+                    <Separator style={{
+                        marginVertical: 10
+                    }}
+                    />
                     {renderPartnerDataPanel()}
                 </>
             );
@@ -527,9 +535,9 @@ export default function UserDetail({ navigation, userInfo, setIsShowSpinner }) {
                     </View>
                 </View>
 
-                <Line
-                    borderColor={COLORS.ACTIVE}
-                    width={SIZES.WIDTH_MAIN}
+                <Separator style={{
+                    marginVertical: 10
+                }}
                 />
 
                 <SubInfoProfile user={userInfo} />
@@ -549,7 +557,8 @@ export default function UserDetail({ navigation, userInfo, setIsShowSpinner }) {
                     </>
                 )} */}
 
-                <Line style={{
+                <Separator style={{
+                    marginVertical: 10,
                     marginBottom: 30
                 }}
                 />

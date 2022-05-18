@@ -147,6 +147,7 @@ export default function NotificationItem({
         <View
             style={{
                 height: 73,
+                backgroundColor: isRead ? COLORS.SEPARATE : COLORS.BASE
             }}
         >
             <View

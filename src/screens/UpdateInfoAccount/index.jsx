@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { LocationModal } from '@components/businessComponents';
 import {
-    CenterLoader, CustomButton, CustomCheckbox, CustomInput, CustomModal, CustomText, Line, OptionItem, TouchableText
+    CenterLoader,
+    CustomButton,
+    CustomCheckbox,
+    CustomInput, CustomModal, CustomText, OptionItem, Separator, TouchableText
 } from '@components/uiComponents';
 import { LOCATION } from '@constants/Common';
 import { HOST_CONTENT } from '@constants/HostContent';
@@ -946,7 +949,10 @@ export default function UpdateInfoAccount({ navigation }) {
                                 {/* {renderInputInterests()} */}
                                 {renderOptionInterests()}
                                 {renderInputDescription()}
-                                <Line />
+                                <Separator style={{
+                                    marginVertical: 10
+                                }}
+                                />
                                 {hostRegisterSection()}
                                 {renderButtonPanel()}
                             </>
