@@ -90,7 +90,7 @@ export default function SignUp({ navigation }) {
                                             {
                                                 color: COLORS.DEFAULT,
                                                 fontSize: SIZES.FONT_H1,
-                                                marginTop: 130
+                                                marginTop: 125
                                             }
                                         ]
                                     }
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     stepSessionContainer: {
-        height: 230,
+        height: 220,
         alignSelf: 'center',
         alignItems: 'center'
     },

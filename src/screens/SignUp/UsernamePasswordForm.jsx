@@ -155,96 +155,94 @@ export default function UsernamePasswordForm({ navigation }) {
 
     const renderRegisterForm = () => (
         <>
-            <View style={styles.formContainer}>
-                <View
-                    style={styles.formInputContainer}
-                >
-                    <CustomInput
-                        label="Tên đăng nhập"
-                        value={username}
-                        inputStyle={{
-                            width: SIZES.WIDTH_MAIN,
-                            textAlign: 'center',
-                        }}
-                        onChangeText={(input) => setUsername(input?.trim() || '')}
-                        containerStyle={{
-                            marginVertical: 10,
-                            width: SIZES.WIDTH_MAIN
-                        }}
-                    />
-
-                    <CustomInput
-                        label="Mật khẩu"
-                        value={password}
-                        inputStyle={{
-                            width: SIZES.WIDTH_MAIN,
-                            textAlign: 'center',
-                        }}
-                        onChangeText={(passwordInput) => setPassword(passwordInput)}
-                        containerStyle={{
-                            marginVertical: 10,
-                            width: SIZES.WIDTH_MAIN
-                        }}
-                        secureTextEntry={!isShowPassword}
-                        rightIcon={{
-                            name: 'eye',
-                            family: IconFamily.ENTYPO,
-                            size: 20,
-                            color: COLORS.DEFAULT
-                        }}
-                        onPressRightIcon={() => setIsShowPassword(!isShowPassword)}
-                    />
-
-                    <CustomInput
-                        label="Xác nhận mật khẩu"
-                        value={rePassword}
-                        inputStyle={{
-                            width: SIZES.WIDTH_MAIN,
-                            textAlign: 'center',
-                        }}
-                        onChangeText={(input) => setRePassword(input)}
-                        containerStyle={{
-                            marginVertical: 10,
-                            width: SIZES.WIDTH_MAIN
-                        }}
-                        secureTextEntry={!isShowPassword}
-                        rightIcon={{
-                            name: 'eye',
-                            family: IconFamily.ENTYPO,
-                            size: 20,
-                            color: COLORS.DEFAULT
-                        }}
-                        onPressRightIcon={() => setIsShowPassword(!isShowPassword)}
-                    />
-                </View>
-
-                <CustomCheckbox
-                    label="Tôi đồng ý với tất cả các Điều khoản và Điều kiện."
-                    onPressLabel={() => {
-                        setModalVisible(true);
+            <View
+                style={styles.formInputContainer}
+            >
+                <CustomInput
+                    label="Tên đăng nhập"
+                    value={username}
+                    inputStyle={{
+                        width: SIZES.WIDTH_MAIN,
+                        textAlign: 'center',
                     }}
-                    isChecked={onCheckedDisclaimer}
-                    onChange={(checked) => setOnCheckedDisclaimer(checked)}
-                />
-
-                <ModalDisclaimer
-                    modalVisible={modalVisible}
-                    setModalVisible={(isVisible) => {
-                        // accept condion
-                        setOnCheckedDisclaimer(true);
-                        // turn off popup
-                        setModalVisible(isVisible);
+                    onChangeText={(input) => setUsername(input?.trim() || '')}
+                    containerStyle={{
+                        marginVertical: 10,
+                        width: SIZES.WIDTH_MAIN
                     }}
                 />
 
-                <View>
-                    <CustomButton
-                        onPress={() => onSubmitSignUp()}
-                        buttonStyle={styles.button}
-                        type="active"
-                        label="Tạo tài khoản"
-                    />
-                </View>
+                <CustomInput
+                    label="Mật khẩu"
+                    value={password}
+                    inputStyle={{
+                        width: SIZES.WIDTH_MAIN,
+                        textAlign: 'center',
+                    }}
+                    onChangeText={(passwordInput) => setPassword(passwordInput)}
+                    containerStyle={{
+                        marginVertical: 10,
+                        width: SIZES.WIDTH_MAIN
+                    }}
+                    secureTextEntry={!isShowPassword}
+                    rightIcon={{
+                        name: 'eye',
+                        family: IconFamily.ENTYPO,
+                        size: 20,
+                        color: COLORS.DEFAULT
+                    }}
+                    onPressRightIcon={() => setIsShowPassword(!isShowPassword)}
+                />
+
+                <CustomInput
+                    label="Xác nhận mật khẩu"
+                    value={rePassword}
+                    inputStyle={{
+                        width: SIZES.WIDTH_MAIN,
+                        textAlign: 'center',
+                    }}
+                    onChangeText={(input) => setRePassword(input)}
+                    containerStyle={{
+                        marginVertical: 10,
+                        width: SIZES.WIDTH_MAIN
+                    }}
+                    secureTextEntry={!isShowPassword}
+                    rightIcon={{
+                        name: 'eye',
+                        family: IconFamily.ENTYPO,
+                        size: 20,
+                        color: COLORS.DEFAULT
+                    }}
+                    onPressRightIcon={() => setIsShowPassword(!isShowPassword)}
+                />
+            </View>
+
+            <CustomCheckbox
+                label="Tôi đồng ý với tất cả các Điều khoản và Điều kiện."
+                onPressLabel={() => {
+                    setModalVisible(true);
+                }}
+                isChecked={onCheckedDisclaimer}
+                onChange={(checked) => setOnCheckedDisclaimer(checked)}
+            />
+
+            <ModalDisclaimer
+                modalVisible={modalVisible}
+                setModalVisible={(isVisible) => {
+                    // accept condion
+                    setOnCheckedDisclaimer(true);
+                    // turn off popup
+                    setModalVisible(isVisible);
+                }}
+            />
+
+            <View>
+                <CustomButton
+                    onPress={() => onSubmitSignUp()}
+                    buttonStyle={styles.button}
+                    type="active"
+                    label="Tạo tài khoản"
+                />
             </View>
         </>
     );
@@ -264,14 +262,12 @@ const styles = StyleSheet.create({
     },
     button: {
         width: SIZES.WIDTH_MAIN,
-        marginVertical: 10
+        marginBottom: 10,
+        marginTop: 20
     },
     title: {
         fontFamily: TEXT_BOLD,
         textAlign: 'center'
-    },
-    formContainer: {
-        height: SIZES.HEIGHT_BASE * 0.65
     },
     formInputContainer: {
         alignItems: 'center',
