@@ -4,17 +4,17 @@ import { CenterLoader, CustomInput, IconCustom } from '@components/uiComponents'
 import {
     GraphQueryString, IconFamily, ScreenName, Theme
 } from '@constants/index';
+import { checkIsFillDataForTheFirstTime } from '@helpers/CommonHelpers';
 import { ToastHelpers } from '@helpers/index';
 import { setChattingWith, setNumberMessageUnread } from '@redux/Actions';
 import { socketRequestUtil } from '@utils/index';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import {
-    Alert,
     FlatList, KeyboardAvoidingView, Platform, StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'react-native-uuid';
+import { useDispatch, useSelector } from 'react-redux';
 
 const {
     FONT: {
@@ -298,27 +298,6 @@ export default function Message({ navigation, route }) {
         setMessageFromInput('');
     };
 
-    const checkIsFillDataForTheFirstTime = () => {
-        if (!currentUser.isFillDataFirstTime) {
-            Alert.alert('Thông tin cá nhân',
-                'Tài khoản của bạn chưa được cập nhật thông tin cá nhân.\nVui lòng cập nhật để có được trải nghiệm tốt nhất với 2SeeYou.',
-                [
-                    {
-                        text: 'Đóng',
-                        style: 'cancel'
-                    },
-                    {
-                        text: 'Cập nhật',
-                        onPress: () => {
-                            navigation.navigate(ScreenName.UPDATE_INFO_ACCOUNT);
-                        },
-                    }
-                ]);
-            return true;
-        }
-        return false;
-    };
-
     const renderInputMessage = () => (
         <View
             style={{
@@ -343,7 +322,8 @@ export default function Message({ navigation, route }) {
                 }}
                 inputStyle={{
                     borderWidth: 0,
-                    textAlign: 'left'
+                    textAlign: 'left',
+                    width: SIZES.WIDTH_90
                 }}
                 autoCapitalize
             />
@@ -351,7 +331,7 @@ export default function Message({ navigation, route }) {
             <TouchableOpacity
                 onPress={() => {
                     if (messageFromInput !== '') {
-                        if (!checkIsFillDataForTheFirstTime()) {
+                        if (!checkIsFillDataForTheFirstTime(currentUser, navigation)) {
                             triggerSendMessage();
                         }
                     }

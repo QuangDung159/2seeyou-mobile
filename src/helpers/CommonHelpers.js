@@ -1,11 +1,16 @@
+/* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 /* eslint-disable no-plusplus */
 import App from '@constants/App';
 import BookingStatus from '@constants/BookingStatus';
 import { LOCATION } from '@constants/Common';
 import { dev, prd, stg } from '@constants/Config';
+import ScreenName from '@constants/ScreenName';
 import * as SecureStore from 'expo-secure-store';
 import moment from 'moment';
+import {
+    Alert
+} from 'react-native';
 import ToastHelpers from './ToastHelpers';
 
 const generateMoneyStr = (moneyText) => `${formatNumberWithSeparator(moneyText.toString().trim())}`;
@@ -140,6 +145,27 @@ export const calculateAge = (yearOfBirth) => {
 };
 
 export const getYear = (date) => moment(date).format('YYYY').toString();
+
+export const checkIsFillDataForTheFirstTime = (currentUser, navigation) => {
+    if (!currentUser.isFillDataFirstTime) {
+        Alert.alert('Thông tin cá nhân',
+            'Tài khoản của bạn chưa được cập nhật thông tin cá nhân.\nVui lòng cập nhật để có được trải nghiệm tốt nhất với 2SeeYou.',
+            [
+                {
+                    text: 'Đóng',
+                    style: 'cancel'
+                },
+                {
+                    text: 'Cập nhật',
+                    onPress: () => {
+                        navigation.navigate(ScreenName.UPDATE_INFO_ACCOUNT);
+                    },
+                }
+            ]);
+        return true;
+    }
+    return false;
+};
 
 export default {
     generateMoneyStr,

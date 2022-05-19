@@ -64,16 +64,6 @@ export default function Home({ navigation }) {
 
     useEffect(
         () => {
-            const onFocus = navigation.addListener('focus', () => {
-                // checkForUpdate();
-            });
-
-            return onFocus;
-        }, []
-    );
-
-    useEffect(
-        () => {
             fetchListNotification();
             fetchListBooking();
             getListConversationFromSocket();
@@ -145,21 +135,6 @@ export default function Home({ navigation }) {
             }
         }, [modalFilterVisible, listPartnerHomeRedux]
     );
-
-    // const checkForUpdate = async () => {
-    //     if (await checkVersion()) {
-    //         Alert.alert('Đã có bản cập nhật mới',
-    //             'Vui lòng cập nhật ứng dụng để có trải nghiệm tốt nhất với 2SeeYou',
-    //             [
-    //                 {
-    //                     text: 'Cập nhật',
-    //                     onPress: () => {
-    //                         Linking.openURL(OutsideApp.GOOGLE_PLAY_STORE.deepLink);
-    //                     },
-    //                 }
-    //             ]);
-    //     }
-    // };
 
     const showAlertLocation = () => {
         let isValidLocation = false;
