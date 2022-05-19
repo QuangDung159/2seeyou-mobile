@@ -221,7 +221,7 @@ export default function Onboarding({ navigation }) {
                                         color: COLORS.ACTIVE,
                                         fontSize: SIZES.FONT_H2
                                     }}
-                                    text="Cà phê nhé!"
+                                    text="Gặp nhau nhé!"
                                 />
                             </View>
                         </View>
