@@ -22,6 +22,7 @@ import VerificationStatusPanel from './VerificationStatusPanel';
 const {
     FONT: {
         TEXT_REGULAR,
+        TEXT_BOLD
     },
     SIZES,
     COLORS
@@ -436,12 +437,16 @@ export default function UploadDocSection({ setIsShowSpinner, navigation, route }
                                 <TouchableOpacity
                                     style={{
                                         flexDirection: 'row',
-                                        alignItems: 'flex-start'
+                                        alignItems: 'flex-start',
+                                        marginBottom: 5
                                     }}
                                     onPress={() => setModalInfoVisible(true)}
                                 >
                                     <CustomText
                                         text="Chọn mục đích: "
+                                        style={{
+                                            fontFamily: TEXT_BOLD
+                                        }}
                                     />
                                     <IconCustom
                                         name="info-circle"
@@ -461,11 +466,17 @@ export default function UploadDocSection({ setIsShowSpinner, navigation, route }
                                         label="Xác thực khách hàng"
                                         selected={!isForPartnerVerify}
                                         onPress={() => setIsForPartnerVerify(false)}
+                                        labelStyle={{
+                                            fontSize: SIZES.FONT_H3
+                                        }}
                                     />
                                     <RadioButton
                                         label="Đăng ký Host"
                                         selected={isForPartnerVerify}
                                         onPress={() => setIsForPartnerVerify(true)}
+                                        labelStyle={{
+                                            fontSize: SIZES.FONT_H3
+                                        }}
                                     />
                                 </View>
                             </>

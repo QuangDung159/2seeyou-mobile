@@ -388,17 +388,40 @@ export default function UserDetail({ navigation, userInfo, setIsShowSpinner }) {
             }}
         >
             {isCurrentUser && (
-                <ProfileInfoItem
-                    fontSize={SIZES.FONT_H3}
-                    iconName="treasure-chest"
-                    iconFamily={IconFamily.MATERIAL_COMMUNITY_ICONS}
-                    content={`Xu trong ví: ${CommonHelpers.formatCurrency(userInfo.walletAmount)}`}
-                    iconSize={18}
-                    contentTextStyle={{
-                        fontFamily: TEXT_BOLD,
-                        color: COLORS.ACTIVE
-                    }}
-                />
+                <>
+                    <ProfileInfoItem
+                        fontSize={SIZES.FONT_H3}
+                        iconName="treasure-chest"
+                        iconFamily={IconFamily.MATERIAL_COMMUNITY_ICONS}
+                        content={`Xu trong ví: ${CommonHelpers.formatCurrency(userInfo.walletAmount)}`}
+                        iconSize={18}
+                        contentTextStyle={{
+                            fontFamily: TEXT_BOLD,
+                            color: COLORS.ACTIVE
+                        }}
+                    />
+                    {!userInfo.isCustomerVerified && !userInfo.isPartnerVerified && (
+                        <TouchableOpacity
+                            onPress={() => {
+                                navigation.navigate(ScreenName.VERIFICATION, {
+                                    navigateFrom: ScreenName.MENU
+                                });
+                            }}
+                        >
+                            <ProfileInfoItem
+                                fontSize={SIZES.FONT_H3}
+                                iconName="info-circle"
+                                iconFamily={IconFamily.FONT_AWESOME}
+                                content="Vui lòng xác thực tài khoản"
+                                iconSize={18}
+                                contentTextStyle={{
+                                    color: COLORS.ERROR
+                                }}
+                                iconColor={COLORS.ERROR}
+                            />
+                        </TouchableOpacity>
+                    )}
+                </>
             )}
 
             {handleShowPartnerDataPanel()}

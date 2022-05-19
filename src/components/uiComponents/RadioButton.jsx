@@ -9,7 +9,7 @@ const {
 } = Theme;
 
 export default function RadioButton({
-    selected, style, label, onPress
+    selected, style, label, onPress, labelStyle
 }) {
     return (
         <TouchableOpacity
@@ -44,11 +44,11 @@ export default function RadioButton({
             </View>
             {label && (
                 <Text
-                    style={{
+                    style={[{
                         marginLeft: 5,
                         fontFamily: TEXT_REGULAR,
                         fontSize: SIZES.FONT_H4,
-                    }}
+                    }, labelStyle]}
                 >
                     {label}
                 </Text>
