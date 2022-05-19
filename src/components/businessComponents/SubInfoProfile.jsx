@@ -36,18 +36,18 @@ export default function SubInfoProfile({ user }) {
             >
                 <ProfileInfoItem
                     fontSize={SIZES.FONT_H3}
-                    iconName={user.isMale ? 'male' : 'female'}
-                    iconFamily={IconFamily.FONTISTO}
-                    content={`${user.isMale ? 'Nam' : 'Nữ'}`}
-                    iconSize={16}
-                />
-                <ProfileInfoItem
-                    fontSize={SIZES.FONT_H3}
                     iconName="birthday-cake"
                     iconFamily={IconFamily.FONT_AWESOME}
                     content={getYear(user.dob).toLowerCase() !== 'invalid date'
                         ? `${calculateAge(+getYear(user.dob))} tuổi`
                         : ''}
+                    iconSize={16}
+                />
+                <ProfileInfoItem
+                    fontSize={SIZES.FONT_H3}
+                    iconName={user.isMale ? 'male' : 'female'}
+                    iconFamily={IconFamily.FONTISTO}
+                    content={`${user.isMale ? 'Nam' : 'Nữ'}`}
                     iconSize={16}
                 />
                 <ProfileInfoItem
