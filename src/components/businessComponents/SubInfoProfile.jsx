@@ -1,5 +1,5 @@
 import { IconFamily, Theme } from '@constants/index';
-import moment from 'moment';
+import { calculateAge, getYear } from '@helpers/CommonHelpers';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
@@ -45,9 +45,9 @@ export default function SubInfoProfile({ user }) {
                     fontSize={SIZES.FONT_H3}
                     iconName="birthday-cake"
                     iconFamily={IconFamily.FONT_AWESOME}
-                    content={moment(user.dob).format('YYYY').toString().toLowerCase() !== 'invalid date'
-                        ? moment(user.dob).format('YYYY').toString()
-                        : '1990'}
+                    content={getYear(user.dob).toLowerCase() !== 'invalid date'
+                        ? `${calculateAge(+getYear(user.dob))} tuổi`
+                        : ''}
                     iconSize={16}
                 />
                 <ProfileInfoItem

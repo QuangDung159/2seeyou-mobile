@@ -10,6 +10,7 @@ import { GENDER } from '@constants/Gender';
 import {
     GraphQueryString, IconFamily, Images, ScreenName, Theme
 } from '@constants/index';
+import { calculateAge, getYear } from '@helpers/CommonHelpers';
 import { CommonHelpers, ToastHelpers } from '@helpers/index';
 import {
     setListBookingStore,
@@ -26,7 +27,7 @@ import * as SecureStore from 'expo-secure-store';
 import moment from 'moment';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-    Alert, FlatList, RefreshControl, StyleSheet, Text, TouchableNativeFeedback, TouchableOpacity, View
+    Alert, FlatList, RefreshControl, StyleSheet, Text, TouchableOpacity, View
 } from 'react-native';
 import ImageScalable from 'react-native-scalable-image';
 import { useDispatch, useSelector } from 'react-redux';
@@ -314,11 +315,6 @@ export default function Home({ navigation }) {
 
     const getUserById = (listUser, userId) => listUser.find((user) => user.id === userId);
 
-    const calculateAge = (dob) => {
-        const currentYear = new Date().getFullYear();
-        return currentYear - dob;
-    };
-
     const fetchListBooking = async () => {
         const res = await BookingServices.fetchListBookingAsync();
         if (res.data) {
@@ -569,9 +565,9 @@ export default function Home({ navigation }) {
                                     iconName="birthday-cake"
                                     iconFamily={IconFamily.FONT_AWESOME}
                                     content={
-                                        moment(item.dob).format('YYYY').toString().toLowerCase() !== 'invalid date'
-                                            ? moment(item.dob).format('YYYY').toString()
-                                            : '1990'
+                                        getYear(item?.dob).toLowerCase() !== 'invalid date'
+                                            ? `${calculateAge(+getYear(item.dob))} tuổi`
+                                            : ''
                                     }
                                     iconSize={16}
                                 />

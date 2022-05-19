@@ -134,6 +134,13 @@ export const clearAllLocalStorage = () => {
     ToastHelpers.renderToast('All caches cleaned!', 'success');
 };
 
+export const calculateAge = (yearOfBirth) => {
+    const currentYear = new Date().getFullYear();
+    return currentYear - yearOfBirth;
+};
+
+export const getYear = (date) => moment(date).format('YYYY').toString();
+
 export default {
     generateMoneyStr,
     formatNumberWithSeparator,
