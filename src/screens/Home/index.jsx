@@ -495,7 +495,8 @@ export default function Home({ navigation }) {
         amountDisplay = CommonHelpers.formatCurrency(amountDisplay);
 
         return (
-            <TouchableNativeFeedback
+            <TouchableOpacity
+                activeOpacity={0.7}
                 onPress={() => navigation.navigate(ScreenName.PROFILE, { userId: item.id })}
             >
                 <View
@@ -639,7 +640,7 @@ export default function Home({ navigation }) {
                     </View>
                     <Separator />
                 </View>
-            </TouchableNativeFeedback>
+            </TouchableOpacity>
         );
     };
 

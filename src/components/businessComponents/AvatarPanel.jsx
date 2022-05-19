@@ -34,7 +34,7 @@ export default function AvatarPanel({
                     style={styles.avatar}
                     source={user.url ? { uri: user.url } : Images.defaultImage}
                 />
-                {isCurrentUser && user.isCustomerVerified && (
+                {isCurrentUser && (user.isCustomerVerified || user.isPartnerVerified) && (
                     <View
                         style={{
                             zIndex: 99,
