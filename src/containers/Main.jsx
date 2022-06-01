@@ -32,7 +32,11 @@ export default function Main() {
         () => {
             dispatch(setDeviceTimezone());
             generateNewDeviceId();
-            checkForUpdate();
+            setTimeout(
+                () => {
+                    checkForUpdate();
+                }, 2000
+            );
         }, []
     );
 
