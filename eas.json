@@ -1,22 +1,25 @@
 {
-    "build": {
-      "prd-apk": {
-        "releaseChannel": "prd",
-        "android": {
-            "buildType": "apk"
-        }
-      },
-      "prd-aab": {
-        "releaseChannel": "prd",
-        "android": {
-            "buildType": "app-bundle"
-        }
-      },
-      "dev-apk": {
-        "releaseChannel": "dev",
-        "android": {
-            "buildType": "apk"
-        }
+  "build": {
+    "prd-apk": {
+      "releaseChannel": "prd",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "prd-aab": {
+      "releaseChannel": "prd",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "dev-apk": {
+      "releaseChannel": "dev",
+      "android": {
+        "buildType": "apk"
       }
     }
+  },
+  "cli": {
+    "version": ">= 0.53.1"
+  }
 }
