@@ -3,7 +3,7 @@
     "name": "2SeeYou",
     "slug": "mobile-2seeyou",
     "scheme": "mobile-2seeyou",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -28,7 +28,7 @@
       "googleServicesFile": "./google-services.json",
       "useNextNotificationsApi": true,
       "softwareKeyboardLayoutMode": "pan",
-      "versionCode": 26
+      "versionCode": 27
     },
     "web": {
       "favicon": "./assets/images/icon.png"
