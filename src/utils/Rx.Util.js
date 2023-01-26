@@ -11,12 +11,12 @@ const { COLORS } = Theme;
 
 const generateLogData = (endpoint, body, headers, res) => {
     const objectStr = JSON.stringify({
-        headers,
+        endpoint,
         body,
-        res
+        res: res.data,
     });
 
-    return `${res.status} ${endpoint}:\n ${objectStr}`;
+    return `${objectStr}`;
 };
 
 const logMessage = (res, endpoint, headers, body, method, apiTokenLocal) => {
@@ -86,7 +86,7 @@ export default async (
         //     response.status = res.status;
         // }
 
-        logMessage(response, url, headers, body, method, apiTokenLocal);
+        // logMessage(response, url, headers, body, method, apiTokenLocal);
 
         if (response.status !== 200 && response.status !== 201) {
             // check token expired
@@ -97,7 +97,8 @@ export default async (
         } else if (response.status === 503) {
             return response;
         }
-
+        const logInfo = generateLogData(endpoint, body, headers, response);
+        console.log(logInfo);
         return response;
     } catch (err) {
         const {
